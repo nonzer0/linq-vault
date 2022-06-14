@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "linq-vault": "apps/linq-vault",
+    "linq-vault-e2e": "apps/linq-vault-e2e"
+  }
+}
