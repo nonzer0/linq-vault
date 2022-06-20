@@ -4,6 +4,20 @@
 
 This project was generated using [Nx](https://nx.dev).
 
+## Backend
+
+Run `nx serve svc-linq-vault`
+
+Application will start at http://localhost:3333/api by default.
+
+## Frontend
+
+Run `nx serve linq-vault-react`
+
+Application will start at http://localhost:4200/ by default.
+
+---
+
 ## Generate an application
 
 Run `nx g @nrwl/react:app my-app` to generate an application.
