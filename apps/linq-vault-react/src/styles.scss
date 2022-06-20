@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --main-bg-color: #202020;
+  --main-font-color: #a8b1ff;
+  --font-color-tags: #59bdb9;
+}
+
+* {
+  font-family: "Helvetica Neue", "Segoe UI", Roboto;
+}
+
+body {
+  background: var(--main-bg-color);
+}
+
+h1 {
+  color: var(--main-font-color);
+}
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  text-decoration: underline;
+}
+
+.link {
+  padding-bottom: 1rem;
+
+  a {
+    color: var(--main-font-color);
+  }
+}
+
+.tag {
+  margin-left: -40px;
+  color: var(--font-color-tags);
+}

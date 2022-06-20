@@ -3,6 +3,10 @@
   "version": 2,
   "projects": {
     "linq-vault": "apps/linq-vault",
-    "linq-vault-e2e": "apps/linq-vault-e2e"
+    "linq-vault-client": "apps/linq-vault-client",
+    "linq-vault-client-e2e": "apps/linq-vault-client-e2e",
+    "linq-vault-e2e": "apps/linq-vault-e2e",
+    "linq-vault-react": "apps/linq-vault-react",
+    "linq-vault-react-e2e": "apps/linq-vault-react-e2e"
   }
 }
