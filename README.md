@@ -6,8 +6,8 @@ This project was generated using [Nx](https://nx.dev).
 
 ## Packages
 
-[linq-vault-react](apps/linq-vault-react/)
-[linq-vault-api](apps/linq-vault-api/)
+- [linq-vault-react](apps/linq-vault-react/README.md) (frontend)
+- [linq-vault-api](apps/linq-vault-api/README.md) (backend)
 
 ## Backend
 
