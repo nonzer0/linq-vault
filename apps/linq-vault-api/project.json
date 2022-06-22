@@ -1,16 +1,16 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/svc-linq-vault/src",
+  "sourceRoot": "apps/linq-vault-api/src",
   "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/svc-linq-vault",
-        "main": "apps/svc-linq-vault/src/main.ts",
-        "tsConfig": "apps/svc-linq-vault/tsconfig.app.json",
-        "assets": ["apps/svc-linq-vault/src/assets"]
+        "outputPath": "dist/apps/linq-vault-api",
+        "main": "apps/linq-vault-api/src/main.ts",
+        "tsConfig": "apps/linq-vault-api/tsconfig.app.json",
+        "assets": ["apps/linq-vault-api/src/assets"]
       },
       "configurations": {
         "production": {
@@ -19,8 +19,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/svc-linq-vault/src/environments/environment.ts",
-              "with": "apps/svc-linq-vault/src/environments/environment.prod.ts"
+              "replace": "apps/linq-vault-api/src/environments/environment.ts",
+              "with": "apps/linq-vault-api/src/environments/environment.prod.ts"
             }
           ]
         }
@@ -29,21 +29,21 @@
     "serve": {
       "executor": "@nrwl/node:node",
       "options": {
-        "buildTarget": "svc-linq-vault:build"
+        "buildTarget": "linq-vault-api:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/svc-linq-vault/**/*.ts"]
+        "lintFilePatterns": ["apps/linq-vault-api/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/svc-linq-vault"],
+      "outputs": ["coverage/apps/linq-vault-api"],
       "options": {
-        "jestConfig": "apps/svc-linq-vault/jest.config.ts",
+        "jestConfig": "apps/linq-vault-api/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -51,7 +51,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "linq-vault-react:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/linq-vault-react/proxy.conf.json"
       },
       "configurations": {
         "development": {

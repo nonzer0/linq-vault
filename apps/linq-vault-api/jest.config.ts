@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'svc-linq-vault',
+  displayName: 'linq-vault-api',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -12,5 +12,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/svc-linq-vault',
+  coverageDirectory: '../../coverage/apps/linq-vault-api',
 };
