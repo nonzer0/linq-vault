@@ -4,6 +4,11 @@
 
 This project was generated using [Nx](https://nx.dev).
 
+## Packages
+
+[linq-vault-react](apps/linq-vault-react/)
+[linq-vault-api](apps/linq-vault-api/)
+
 ## Backend
 
 Run `nx serve svc-linq-vault`

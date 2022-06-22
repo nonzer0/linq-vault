@@ -6,7 +6,6 @@
     "linq-vault-api": "apps/linq-vault-api",
     "linq-vault-e2e": "apps/linq-vault-e2e",
     "linq-vault-react": "apps/linq-vault-react",
-    "linq-vault-react-e2e": "apps/linq-vault-react-e2e",
-    "svc-linq-vault": "apps/svc-linq-vault"
+    "linq-vault-react-e2e": "apps/linq-vault-react-e2e"
   }
 }
