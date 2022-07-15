@@ -1,5 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2017",
+    "types": ["node", "express"]
+  },
   "files": [],
   "include": [],
   "references": [
