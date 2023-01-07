@@ -11,6 +11,9 @@
 # production
 /build
 
+# firebase sensitive keys
+src/firebase-config.ts
+
 # misc
 .DS_Store
 .env.local
