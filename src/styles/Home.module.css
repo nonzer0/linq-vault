@@ -1,3 +1,7 @@
+.App {
+  height: 5000;
+}
+
 .container {
   padding: 0 2rem;
   display: grid;
@@ -16,13 +20,56 @@
   align-items: center;
 }
 
+.appBarCustom {
+  background-color: black;
+}
+
+.appBarContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.appbarContents {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.appbarContentsMinor {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.appBar {
+  background-color: black;
+}
+
+.appBarActions {
+  display: flex;
+  justify-content: right;
+  padding-bottom: 5px;
+}
+
 .heading {
-  position: sticky; top: 0;
+  /* position: sticky; top: 0; */
   height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   background-color: black;
+}
+
+h2 {
+  margin-bottom: 0px;
+}
+
+tagHeader {
+  display: flex;
+  align-items: bottom;
 }
 
 .bookmarkHeading {
@@ -35,8 +82,8 @@
 }
 
 .search {
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
   /* align-self: flex-end; */
 }
 
@@ -64,6 +111,24 @@
   align-self: start;
 }
 
+root {
+  --paper: #36454f;
+}
+
+lvDialog {
+  background-color: var(--paper);
+}
+
+.MuiDialogContent-root form {
+  display: flex;
+  align-items: center;
+}
+
+.modalTextField {
+  width: 400px;
+  background-color: white;
+}
+
 .inputContainer {
   display: flex;
   flex-direction: column;
@@ -73,17 +138,14 @@
   width: 200px;
 }
 
-.input {
-  /* padding: 4px; */
-  margin-bottom: 4px;
-  height: 30px;
-  /* width: 140px; */
+.linkButtonGroup {
+  min-width: 0px;
 }
 
 .editButton {
-  background: none!important;
+  background: none !important;
   border: none;
-  padding: 0!important;
+  padding: 0 !important;
   /*optional*/
   font-family: arial, sans-serif;
   font-size: 12px;
@@ -113,7 +175,6 @@
 .tags {
   font-size: 14px;
   color: gray;
-
 }
 
 .footer {

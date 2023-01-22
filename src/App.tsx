@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { orderByChild, query, ref } from "firebase/database";
 import { useDatabase, useDatabaseListData } from "reactfire";
-import { BookmarkList, CreateBookmark, Search } from "./components";
+import { AddBookmarkModal, BookmarkList, CreateBookmark, Search } from "./components";
 
 import styles from "./styles/Home.module.css";
 import "./styles/globals.css";
@@ -29,23 +32,57 @@ function App() {
         <meta name="description" content="bookmarking app" />
         <link rel="icon" href="/favicon.ico" />
       </header>
-      <div className={styles.heading}>
-        <h2 className={styles.bookmarkHeading}>Bookmarks</h2>
-        <div className={styles.login}>
-          <div>login/register</div>
-        </div>
-      </div>
-      <Search filterLinks={setFilterLinks} />
-      <div className={styles.container}>
-        <main className={styles.section}>
-          <div className={styles.mainContainer}>
-            <BookmarkList links={filterLinks} />
-          </div>
-        </main>
-        <CreateBookmark />
-
-        <footer className={styles.footer}>footer</footer>
-      </div>
+      <AppBar
+        className={styles.appBarCustom}
+        sx={{
+          backgroundColor: "black",
+          position: "sticky",
+          top: "0",
+          py: "10px"
+        }}
+      >
+        <Grid2 container spacing={2}>
+          <Grid2 xs={8}>
+            <div className={styles.appBarActions}>
+            <AddBookmarkModal />
+            </div>
+            <div className={styles.appbarContents}>
+              <h2>Bookmarks</h2>
+              <Search filterLinks={setFilterLinks} />
+            </div>
+          </Grid2>
+          <Grid2 sx={{ display: "flex", alignItems: "flex-end" }}>
+            <div className={styles.appbarContentsMinor}>
+              <h4 style={{marginBottom: "0px"}}>Tags</h4>
+            </div>
+          </Grid2>
+        </Grid2>
+      </AppBar>
+      <Grid2 container spacing={2}>
+        <Grid2
+          xs={8}
+          sx={
+            {
+              // marginTop: "74px",
+            }
+          }
+        >
+          <BookmarkList links={filterLinks} />
+        </Grid2>
+        <Grid2
+          xs={4}
+          sx={
+            {
+              // marginTop: "74px",
+            }
+          }
+        >
+          <CreateBookmark />
+        </Grid2>
+        <Grid2 xs={12}>
+          <footer className={styles.footer}>footer</footer>
+        </Grid2>
+      </Grid2>
     </div>
   );
 }
