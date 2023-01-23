@@ -14,7 +14,7 @@ interface LibTextFieldProps {
   fullwidth?: boolean;
   type?: string;
   value?: string | number | boolean | string[];
-  error?: string | number | boolean;
+  error?: boolean | undefined;
 }
 
 export function LibTextField({

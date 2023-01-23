@@ -1,2 +1,2 @@
-export * from "./LibButton";
+export * from "./LibLinkButton";
 export * from "./LibTextField";
