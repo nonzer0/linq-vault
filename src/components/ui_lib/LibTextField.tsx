@@ -1,33 +1,19 @@
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 
 import styles from "../../styles/Home.module.css";
-
-interface LibTextFieldProps {
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-  placeholder: string;
-  id: string;
-  className?: string;
-  disabled?: boolean;
-  fullwidth?: boolean;
-  type?: string;
-  value?: string | number | boolean | string[];
-  error?: boolean | undefined;
-}
-
+ 
 export function LibTextField({
   onChange,
   id,
   placeholder,
   className,
   disabled,
-  fullwidth,
+  fullWidth,
   type,
   value,
   error,
-}: LibTextFieldProps) {
+}: TextFieldProps) {
   return (
     <Box
       className={styles.search}
@@ -48,7 +34,7 @@ export function LibTextField({
             color: "white",
           },
         }}
-        fullwidth={fullwidth}
+        fullWidth={fullWidth}
         id={id}
         variant="outlined"
         value={value}
