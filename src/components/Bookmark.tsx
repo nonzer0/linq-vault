@@ -1,4 +1,9 @@
+import ListItem from "@mui/material/ListItem";
+import ButtonGroup from "@mui/material/ButtonGroup";
+
 import { DeleteBookmark } from "./DeleteBookmark";
+import { EditBookmark } from "./EditBookmark";
+import { LibLinkButton as LinkBtn } from "./ui_lib/LibLinkButton";
 import { Tags } from "./Tags";
 import { Link } from "../types/types";
 
@@ -16,21 +21,28 @@ export function Bookmark({ link }: BookmarkProps) {
   }
 
   return (
-    <div className={styles.bookmark}>
-      <a className={styles.bookmarkTitle} href={link.url}>
-        {link.title}
-      </a>
-      <Tags tags={link.tags} linkId={link.id} />
-      <div className={styles.subSetOne}>
+    <ListItem sx={{ display: "flex" }} key={link.id}>
+      <div className="link-container">
+        <a className={styles.bookmarkTitle} href={link.url}>
+          {link.title}
+        </a>
+        <Tags tags={link.tags} linkId={link.id} />
         <div className={styles.createdAt}>
-          {link?.createdAt ? convertedDate(link?.createdAt) : "date"} &mdash;
+          {link?.createdAt ? convertedDate(link?.createdAt) : "date"}
         </div>
-        <div>
-          <button className={styles.editButton}>edit</button>
-          <button className={styles.editButton}>archive</button>
+        <ButtonGroup
+          sx={{
+              marginLeft: '-5px',
+            }}
+          size="small"
+          variant="outlined"
+          aria-label="outlined button group"
+        >
+          <EditBookmark />
+          <LinkBtn text={"archive"} onClick={() => {}} />
           <DeleteBookmark bookmarkId={link.id} />
-        </div>
+        </ButtonGroup>
       </div>
-    </div>
+    </ListItem>
   );
 }
