@@ -1,6 +1,5 @@
 export * from "./Bookmark";
 export * from "./BookmarkList";
-export * from "./CreateBookmark";
 export * from "./DeleteBookmark";
 export * from "./EditBookmark";
 export * from "./Search";

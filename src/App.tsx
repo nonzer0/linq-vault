@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { orderByChild, query, ref } from "firebase/database";
 import { useDatabase, useDatabaseListData } from "reactfire";
-import { AddBookmarkModal, BookmarkList, CreateBookmark, Search } from "./components";
+import { AddBookmarkModal, BookmarkList, Search } from "./components";
 
 import styles from "./styles/Home.module.css";
 import "./styles/globals.css";
@@ -38,13 +37,13 @@ function App() {
           backgroundColor: "black",
           position: "sticky",
           top: "0",
-          py: "10px"
+          py: "10px",
         }}
       >
         <Grid2 container spacing={2}>
           <Grid2 xs={8}>
             <div className={styles.appBarActions}>
-            <AddBookmarkModal />
+              <AddBookmarkModal />
             </div>
             <div className={styles.appbarContents}>
               <h2>Bookmarks</h2>
@@ -53,32 +52,16 @@ function App() {
           </Grid2>
           <Grid2 sx={{ display: "flex", alignItems: "flex-end" }}>
             <div className={styles.appbarContentsMinor}>
-              <h4 style={{marginBottom: "0px"}}>Tags</h4>
+              <h4 style={{ marginBottom: "0px" }}>Tags</h4>
             </div>
           </Grid2>
         </Grid2>
       </AppBar>
       <Grid2 container spacing={2}>
-        <Grid2
-          xs={8}
-          sx={
-            {
-              // marginTop: "74px",
-            }
-          }
-        >
+        <Grid2 xs={8}>
           <BookmarkList links={filterLinks} />
         </Grid2>
-        <Grid2
-          xs={4}
-          sx={
-            {
-              // marginTop: "74px",
-            }
-          }
-        >
-          <CreateBookmark />
-        </Grid2>
+        <Grid2 xs={4}></Grid2>
         <Grid2 xs={12}>
           <footer className={styles.footer}>footer</footer>
         </Grid2>
