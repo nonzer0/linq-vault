@@ -1,9 +1,11 @@
 import React from "react";
+import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import {
-  useFirebaseApp,
+  AuthProvider,
   DatabaseProvider,
-  FirebaseAppProvider
+  FirebaseAppProvider,
+  useFirebaseApp,
 } from "reactfire";
 
 import { firebaseConfig } from "./firebase-config";
@@ -11,8 +13,13 @@ import { firebaseConfig } from "./firebase-config";
 function ProviderHelpers({ children }: { children: React.ReactNode }) {
   const firebaseApp = useFirebaseApp();
   const dbInstance = getDatabase(firebaseApp);
+  const auth = getAuth(firebaseApp);
 
-  return <DatabaseProvider sdk={dbInstance}>{children}</DatabaseProvider>;
+  return (
+    <AuthProvider sdk={auth}>
+      <DatabaseProvider sdk={dbInstance}>{children}</DatabaseProvider>
+    </AuthProvider>
+  );
 }
 
 export function FirebaseProvider({ children }: { children: React.ReactNode }) {

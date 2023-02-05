@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { orderByChild, query, ref } from "firebase/database";
+import firebaseui from "firebaseui";
 import { useDatabase, useDatabaseListData } from "reactfire";
 import { AddBookmarkModal, BookmarkList, Search } from "./components";
 
@@ -9,6 +10,7 @@ import styles from "./styles/Home.module.css";
 import "./styles/globals.css";
 
 function App() {
+  const ui = new firebaseui.auth.AuthUI(firebase.auth());
   const db = useDatabase();
   const dbRef = ref(db, "/bookmarks");
   const linksQuery = query(dbRef, orderByChild("title"));
