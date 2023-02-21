@@ -1,6 +1,5 @@
 import ReactDOM from "react-dom/client";
-
-import { FirebaseProvider } from "./FirebaseProvider";
+import { SupabaseProvider } from "./supabaseContext";
 
 import "./index.css";
 import "@fontsource/roboto/300.css";
@@ -14,7 +13,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <FirebaseProvider>
+  <SupabaseProvider>
     <App />
-  </FirebaseProvider>
+  </SupabaseProvider>
 );

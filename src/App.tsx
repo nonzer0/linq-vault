@@ -1,31 +1,52 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
-import { orderByChild, query, ref } from "firebase/database";
-import { useDatabase, useDatabaseListData } from "reactfire";
+// import { orderByChild, query, ref } from "firebase/database";
+// import { useDatabase, useDatabaseListData } from "reactfire";
+import { supabase } from './supabaseClient';
+import type { AuthSession } from '@supabase/supabase-js'
+import Auth from './components/Auth';
 import { AddBookmarkModal, BookmarkList, Search } from "./components";
+import { SupabaseContext } from "./supabaseContext";
 
 import styles from "./styles/Home.module.css";
 import "./styles/globals.css";
 
 function App() {
-  const db = useDatabase();
-  const dbRef = ref(db, "/bookmarks");
-  const linksQuery = query(dbRef, orderByChild("title"));
+  const { session } = useContext(SupabaseContext);
+  // const db = useDatabase();
+  // const dbRef = ref(db, "/bookmarks");
+  // const linksQuery = query(dbRef, orderByChild("title"));
 
-  const { status, data: links } = useDatabaseListData(linksQuery, {
-    idField: "id",
-  });
+  // const { status, data: links } = useDatabaseListData(linksQuery, {
+  //   idField: "id",
+  // });
 
-  const [filterLinks, setFilterLinks] = useState<any | undefined>();
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [filterLinks, setFilterLinks] = useState<any | undefined>();
+  // const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    setFilterLinks(links);
-  }, [links]);
+  // useEffect(() => {
+  //   setFilterLinks(links);
+  // }, [links]);
+
+  // const [session, setSession] = useState<AuthSession | null>(null)
+  // const [username, setUsername] = useState<string | null>(null)
+
+  // useEffect(() => {
+  //   supabase.auth.getSession().then(({ data: { session } }) => {
+  //     setSession(session)
+  //     console.log('session', session)
+  //   });
+
+  //   supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session)
+  //   });
+  // }, []);
 
   return (
     <div className="App">
+    {!session ? <Auth /> : 
+    <div>
       <header>
         <title>Bookmarks</title>
         <meta name="description" content="bookmarking app" />
@@ -47,7 +68,7 @@ function App() {
             </div>
             <div className={styles.appbarContents}>
               <h2>Bookmarks</h2>
-              <Search filterLinks={setFilterLinks} />
+              {/* <Search filterLinks={} /> */}
             </div>
           </Grid2>
           <Grid2 sx={{ display: "flex", alignItems: "flex-end" }}>
@@ -59,13 +80,14 @@ function App() {
       </AppBar>
       <Grid2 container spacing={2}>
         <Grid2 xs={8}>
-          <BookmarkList links={filterLinks} />
+          <BookmarkList />
         </Grid2>
         <Grid2 xs={4}></Grid2>
         <Grid2 xs={12}>
           <footer className={styles.footer}>footer</footer>
         </Grid2>
       </Grid2>
+      </div>}
     </div>
   );
 }

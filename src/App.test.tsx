@@ -29,7 +29,7 @@ export function FirebaseProvider({ children }: { children: React.ReactNode }) {
 describe('App', () => {
   test('renders Add New Bookmark', () => {
     render(<FirebaseProvider><App /></FirebaseProvider>);
-    const titleElem = screen.getByText(/Add Bookmark/i);
+    const titleElem = screen.getByText(/Send magic link/i);
     expect(titleElem).toBeInTheDocument();
   });
 })
