@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 // import { orderByChild, query, ref } from "firebase/database";
 // import { useDatabase, useDatabaseListData } from "reactfire";
-import { supabase } from './supabaseClient';
+import { supabase } from "./supabase";
 import type { AuthSession } from '@supabase/supabase-js'
 import Auth from './components/Auth';
 import { AddBookmarkModal, BookmarkList, Search } from "./components";
