@@ -51,7 +51,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "jest --watch --onlyChanged",
-    "test.ci": "jest"
+    "test.ci": "jest --passWithNoTests"
   },
   "eslintConfig": {
     "extends": [
