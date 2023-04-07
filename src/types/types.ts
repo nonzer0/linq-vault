@@ -13,3 +13,10 @@ export type LinkRecords = {
   [key: string]: Link;
 };
 
+export type Tag = {
+  name: string;
+}
+
+export type Tags = { 
+  tags: Tag[]
+}

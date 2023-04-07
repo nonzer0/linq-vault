@@ -8,4 +8,4 @@ Bookmarking app
 
 ## Backend
 
-[firebase realtime database](https://firebase.google.com/docs/database)
+[supabase](https://app.supabase.com)

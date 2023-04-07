@@ -1,7 +1,6 @@
-import * as React from "react";
-import { onValue, push, ref, serverTimestamp, set } from "firebase/database";
-import { useDatabase } from "reactfire";
+import { useContext, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import type { AuthSession } from "@supabase/supabase-js";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -14,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 // import { LibTextField as TextField } from "../ui_lib/LibTextField";
+import { SupabaseContext } from "../../supabaseContext";
 import { Link, LinkRecords } from "../../types/types";
 
 import styles from "../../styles/Home.module.css";
@@ -31,11 +31,11 @@ const theme = createTheme({
 });
 
 export function AddBookmarkModal() {
-  const db = useDatabase();
-
+  const { session, supabaseClient } = useContext(SupabaseContext);
   const initLink = { url: "", title: "", tags: [], archived: false, id: "" };
-  const [newLink, setNewLink] = React.useState<Link>(initLink);
-  const [links, setLinks] = React.useState<LinkRecords | undefined>(undefined);
+  const [newLink, setNewLink] = useState<Link>(initLink);
+  const [links, setLinks] = useState<LinkRecords | undefined>(undefined);
+  const [newTags, setNewTags] = useState<any | undefined>([]);
 
   const schema = yup
     .object({
@@ -59,30 +59,61 @@ export function AddBookmarkModal() {
     },
   });
 
-  const saveBookmark = (event: any) => {
+  const saveBookmark = async (event: any) => {
     // event.preventDefault();
     console.log(newLink);
     const { url, title, tags } = newLink;
-    const bookmarkListRef = ref(db, `/bookmarks`);
-    const newBookmarkRef = push(bookmarkListRef);
-    set(newBookmarkRef, {
-      url,
-      title,
-      tags,
-      createdAt: serverTimestamp(),
-      archived: false,
-    })
-      .then(() => {
-        onValue(bookmarkListRef, (snapshot) => {
-          setLinks(snapshot.val());
-          setNewLink(initLink);
-          toggleModal();
-        });
-      })
-      .catch((e: any) => {
-        throw new Error(`oops ${e}`);
-      });
+
+    // const currentTags = getTags(tags);
+    getTags(tags);
+
+    const { data, error } = await supabaseClient
+      .from("links")
+      .insert([{ url, title, user_id: session?.user.id }]);
+
+
+    // .catch((error: any) => {
+    //   console.error(error);
+    // });
+    // const bookmarkListRef = ref(db, `/bookmarks`);
+    // const newBookmarkRef = push(bookmarkListRef);
+    // set(newBookmarkRef, {
+    //   url,
+    //   title,
+    //   tags,
+    //   createdAt: serverTimestamp(),
+    //   archived: false,
+    // })
+    //   .then(() => {
+    //     onValue(bookmarkListRef, (snapshot) => {
+    //       setLinks(snapshot.val());
+    //       setNewLink(initLink);
+    //       toggleModal();
+    //     });
+    //   })
+    //   .catch((e: any) => {
+    //     throw new Error(`oops ${e}`);
+    //   });
+  if (error) console.log('insert error', error);
   };
+
+
+  function getTags(tagList: string[]) {
+    console.log("taglist", tagList);
+    supabaseClient
+      .from("tags")
+      .select()
+      .in("name", tagList) // use the in operator to match any value in the list
+      .then((result) => {
+        const { data } = result;
+        const tmpTags: any = [];
+        data?.forEach((tag: any) => {
+          if (!tagList.includes(tag)) tmpTags.push(tag);
+        });
+        console.log("result", result.data); // an array of objects containing the selected rows
+        setNewTags(tmpTags);
+      });
+  }
 
   function onChange(e: any) {
     const { value } = e.target;
@@ -100,7 +131,7 @@ export function AddBookmarkModal() {
     }
   }
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);

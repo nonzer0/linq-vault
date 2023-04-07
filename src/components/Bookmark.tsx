@@ -20,13 +20,14 @@ export function Bookmark({ link }: BookmarkProps) {
     return dateString.split(" ").slice(1).join(" ");
   }
 
+  console.log('link', link);
   return (
     <ListItem sx={{ display: "flex" }} key={link.id}>
       <div className="link-container">
         <a className={styles.bookmarkTitle} href={link.url}>
           {link.title}
         </a>
-        <Tags tags={link.tags} linkId={link.id} />
+        {/* <Tags tags={link.tags} linkId={link.id} /> */}
         <div className={styles.createdAt}>
           {link?.createdAt ? convertedDate(link?.createdAt) : "date"}
         </div>
@@ -40,7 +41,7 @@ export function Bookmark({ link }: BookmarkProps) {
         >
           <EditBookmark />
           <LinkBtn text={"archive"} onClick={() => {}} />
-          <DeleteBookmark bookmarkId={link.id} />
+          {/* <DeleteBookmark bookmarkId={link.id} /> */}
         </ButtonGroup>
       </div>
     </ListItem>
